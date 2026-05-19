@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI Video Production Master Control for multi-agent content generation, scripting, visuals, SEO, and publishing.">
+    <meta name="theme-color" content="#0b1020">
+    <title>AI Video Production | Master Control</title>
+    <link rel="icon" href="favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <noscript>
+        <div class="noscript-banner">JavaScript is required for production controls, section switching, and live logs.</div>
+    </noscript>
+
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <div class="app-wrapper">
+        <aside class="sidebar" aria-label="Sidebar navigation" id="sidebar">
+            <div class="brand">
+                <i class="fas fa-bolt-lightning" aria-hidden="true"></i>
+                <span>AUTON_VIDEO_V3</span>
+            </div>
+
+            <button class="mobile-menu-toggle" type="button" onclick="toggleSidebar()" aria-controls="sidebar" aria-expanded="true">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+                <span>Menu</span>
+            </button>
+
+            <nav class="menu" aria-label="Primary">
+                <div class="menu-label">CORE SYSTEM</div>
+
+                <button type="button" class="menu-item active" id="btnProduction" onclick="showSection('production')" aria-controls="production-section" aria-pressed="true">
+                    <i class="fas fa-clapperboard" aria-hidden="true"></i>
+                    <span>Production Center</span>
+                </button>
+
+                <button type="button" class="menu-item" id="btnAdmin" onclick="openAdminPanel()" aria-haspopup="dialog" aria-controls="adminDialog" aria-expanded="false">
+                    <i class="fas fa-user-shield" aria-hidden="true"></i>
+                    <span>Admin Panel</span>
+                </button>
+
+                <div class="menu-label">RESOURCES</div>
+
+                <button type="button" class="menu-item">
+                    <i class="fas fa-server" aria-hidden="true"></i>
+                    <span>Model Routing</span>
+                </button>
+
+                <button type="button" class="menu-item">
+                    <i class="fas fa-database" aria-hidden="true"></i>
+                    <span>Asset Library</span>
+                </button>
+
+                <button type="button" class="menu-item">
+                    <i class="fas fa-chart-line" aria-hidden="true"></i>
+                    <span>Analytics</span>
+                </button>
+
+                <button type="button" class="menu-item" onclick="toggleTheme()">
+                    <i class="fas fa-circle-half-stroke" aria-hidden="true"></i>
+                    <span>Dark / Light</span>
+                </button>
+            </nav>
+
+            <div class="user-profile" aria-label="User status">
+                <div class="status-indicator" aria-hidden="true"></div>
+                <span>Root Admin: Active</span>
+            </div>
+        </aside>
+
+        <main class="main-body" id="main-content">
+            <section id="production-section" class="section active" aria-labelledby="production-title">
+                <header class="main-header">
+                    <h1 id="production-title">AI Multiverse <span>Control Center</span></h1>
+                    <p>Managing 18 autonomous agents across 0 universes</p>
+                </header>
+
+                <section class="input-container glass" aria-labelledby="init-title">
+                    <h2 id="init-title"><i class="fas fa-terminal" aria-hidden="true"></i> Initialize Production</h2>
+
+                    <form class="form-grid" id="productionForm" onsubmit="handleSubmit(event)" novalidate>
+                        <div class="field-group">
+                            <label for="topicInput">Topic <span aria-hidden="true">*</span></label>
+                            <input type="text" id="topicInput" name="topic" placeholder="Example: Future AI Robots" required autocomplete="off">
+                        </div>
+
+                        <div class="field-group">
+                            <label for="platformSelect">Platform <span aria-hidden="true">*</span></label>
+                            <select id="platformSelect" name="platform" required>
+                                <option value="" selected disabled>Select platform</option>
+                                <option value="youtube-shorts">YouTube Shorts</option>
+                                <option value="tiktok">TikTok</option>
+                                <option value="instagram-reels">Instagram Reels</option>
+                                <option value="facebook-video">Facebook Video</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn-launch" id="launchBtn">
+                            RUN ALL AGENTS
+                        </button>
+                    </form>
+                </section>
+
+                <section class="agent-grid" id="agentGrid" aria-label="Agent list">
+                    <div class="empty-state">No agents loaded yet. Enter a topic and press RUN ALL AGENTS.</div>
+                </section>
+            </section>
+        </main>
+    </div>
+
+    <dialog id="adminDialog" class="admin-dialog" aria-labelledby="adminDialogTitle" aria-modal="true">
+        <div class="dialog-shell">
+            <div class="dialog-header">
+                <h2 id="adminDialogTitle">System Admin Panel</h2>
+                <button type="button" class="close-btn" onclick="closeAdminPanel()" aria-label="Close admin panel">×</button>
+            </div>
+
+            <p class="section-note">Use secure backend storage for real credentials. Never expose live API keys in frontend code.</p>
+
+            <div class="admin-grid">
+                <section class="admin-card" aria-labelledby="api-credentials-title">
+                    <h3 id="api-credentials-title">API Credentials</h3>
+
+                    <div class="field-group">
+                        <label for="openaiKey">OpenAI GPT-4o</label>
+                        <input type="password" id="openaiKey" name="openaiKey" placeholder="Enter API key">
+                    </div>
+
+                    <div class="field-group">
+                        <label for="runwayKey">Runway Gen-3</label>
+                        <input type="password" id="runwayKey" name="runwayKey" placeholder="Enter API key">
+                    </div>
+                </section>
+
+                <section class="admin-card" aria-labelledby="model-routing-title">
+                    <h3 id="model-routing-title">Model Routing</h3>
+
+                    <div class="route-item">
+                        <label for="scriptModel">Script Writing</label>
+                        <select id="scriptModel" name="scriptModel">
+                            <option value="claude-3-5-sonnet">Claude 3.5 Sonnet</option>
+                            <option value="gpt-5-codex">GPT-5 Codex</option>
+                        </select>
+                    </div>
+
+                    <div class="route-item">
+                        <label for="imageModel">Image Gen</label>
+                        <select id="imageModel" name="imageModel">
+                            <option value="midjourney-v6">Midjourney v6</option>
+                            <option value="flux-pro">Flux Pro</option>
+                        </select>
+                    </div>
+                </section>
+
+                <section class="admin-card usage-card" aria-labelledby="credit-usage-title">
+                    <h3 id="credit-usage-title">Credit Usage</h3>
+                    <div class="usage-stat">
+                        <span class="val">$482.00</span>
+                        <span class="lab">Credits Remaining</span>
+                    </div>
+                </section>
+            </div>
+
+            <section class="terminal-container" aria-labelledby="logs-title">
+                <h3 id="logs-title"><i class="fas fa-code" aria-hidden="true"></i> AgentMonitor Live Logs</h3>
+                <pre class="terminal" id="terminalLogs">> System Initialized...</pre>
+            </section>
+        </div>
+    </dialog>
+
+    <script src="script.js"></script>
+</body>
+</html>
