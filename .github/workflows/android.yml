@@ -19,11 +19,8 @@ jobs:
           distribution: temurin
           java-version: 17
 
-      - name: List files
+      - name: Show project files
         run: ls -R
-
-      - name: Give permission to gradlew
-        run: chmod +x gradlew
 
       - name: Build APK
         run: ./gradlew assembleDebug
