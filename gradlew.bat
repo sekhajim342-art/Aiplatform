@@ -1,5 +1,5 @@
-#!/usr/bin/env sh
+@ECHO OFF
 
-DIR="$(cd "$(dirname "$0")"; pwd)"
+SET DIR=%~dp0
 
-java -classpath "$DIR/gradle/wrapper/gradle-wrapper.jar" org.gradle.wrapper.GradleWrapperMain "$@"
+java -classpath "%DIR%\gradle\wrapper\gradle-wrapper.jar" org.gradle.wrapper.GradleWrapperMain %*
