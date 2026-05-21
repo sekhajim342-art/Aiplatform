@@ -1,5 +1,3 @@
-#!/usr/bin/env sh
+#!/bin/sh
 
-DIR="$(cd "$(dirname "$0")"; pwd)"
-
-java -classpath "$DIR/gradle/wrapper/gradle-wrapper.jar" org.gradle.wrapper.GradleWrapperMain "$@"
+exec java -classpath gradle/wrapper/gradle-wrapper.jar org.gradle.wrapper.GradleWrapperMain "$@"
