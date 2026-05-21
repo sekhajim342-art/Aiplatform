@@ -33,3 +33,8 @@ jobs:
         with:
           name: app-debug
           path: app/build/outputs/apk/debug/*.apk
+- name: Make gradlew executable
+  run: chmod +x gradlew
+
+- name: Build APK
+  run: sh gradlew assembleDebug
